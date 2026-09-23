@@ -1,0 +1,34 @@
+// Last updated: 9/23/2026, 2:47:46 PM
+import java.util.*;
+
+class Solution {
+    public List<String> summaryRanges(int[] nums) {
+
+        List<String> result = new ArrayList<>();
+
+        int i = 0;
+
+        while (i < nums.length) {
+
+            int start = nums[i];
+
+            // Find the end of consecutive sequence
+            while (i + 1 < nums.length &&
+                   (long) nums[i + 1] == (long) nums[i] + 1) {
+                i++;
+            }
+
+            int end = nums[i];
+
+            if (start == end) {
+                result.add(String.valueOf(start));
+            } else {
+                result.add(start + "->" + end);
+            }
+
+            i++;
+        }
+
+        return result;
+    }
+}
